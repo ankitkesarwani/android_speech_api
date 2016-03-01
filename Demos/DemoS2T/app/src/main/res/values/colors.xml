@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="blue_light" type="color">#e2f4fd</item>
+    <item name="blue_primary" type="color">#3eaae0</item>
+    <item name="blue_dark" type="color">#1a87c8</item>
+    <item name="blue_darker" type="color">#1b75bb</item>
+    <item name="black" type="color">#000000</item>
+    <item name="grey_very_dark" type="color">#333333</item>
+    <item name="grey_dark" type="color">#666666</item>
+    <item name="grey_light" type="color">#999999</item>
+    <item name="grey_very_light" type="color">#bbbbbb</item>
+    <item name="white" type="color">#ffffff</item>
+</resources>

@@ -1,0 +1,103 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/sound_startbig_up"
+        android:background="@null"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tapTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button1"
+        android:layout_marginTop="8dp"
+        android:text="Tap to record"
+        android:textStyle="italic"
+        android:textColor="@color/blue_dark"
+        android:textSize="16sp"
+        android:gravity="center"
+        />
+
+    <View
+        android:id="@+id/line_view"
+        android:layout_width="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/tapTextView"
+        android:background="@color/grey_dark"/>
+
+    <ProgressBar
+        android:id="@+id/progress_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_view"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/contentTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/line_view"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/grey_very_dark"
+        />
+    <TextView
+        android:id="@+id/contentTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/contentTextView1"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/grey_dark"
+        />
+    <TextView
+        android:id="@+id/contentTextView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/contentTextView2"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/grey_light"
+        />
+
+
+    <TextView
+        android:id="@+id/contentTextView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/contentTextView3"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/grey_very_light"
+        />
+
+    <ImageView
+        android:id="@+id/livai_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/livai"/>
+
+</RelativeLayout>
