@@ -22,15 +22,6 @@ repositories {
 }
 ```
 
-- In proguard-rules.pro, include the following lines -
-```sh
--keep class android.support.v7.** { *; }
--keep interface android.support.v7.** { *; }
--dontwarn org.apache.commons.**
--keep class org.apache.http.** { *; }
--dontwarn org.apache.http.**
-```
-
 - In app build.gradle, add the following inside android tag -
 ```sh
 android {
@@ -49,12 +40,22 @@ android {
 }
 ```
 
+- In proguard-rules.pro, include the following lines -
+```sh
+-keep class android.support.v7.** { *; }
+-keep interface android.support.v7.** { *; }
+-dontwarn org.apache.commons.**
+-keep class org.apache.http.** { *; }
+-dontwarn org.apache.http.**
+```
+
+
 ### Using s2tlibrary in application code
  - In strings.java located at app/src/res/values/, add the following line 
  ```sh
  <string name="livtoken"><liv.ai_api_token_value></string>
  ```
- Please replace <liv.ai_api_token_value> with app token obtained from Liv AI. If you don't have a token, please write to us at hello@liv.ai
+ Please replace liv.ai_api_token_value with app token obtained from Liv AI. If you don't have a token, please write to us at hello@liv.ai
  
  - Create a Speech2TextIntent and pass necessary flags to it when you wish to trigger Speech recognition. The allowed flags are Speech2TextIntent.LANGUAGE. Values of this flag can be Speech2TextIntent.LANGUAGE_ENGLISH or Speech2TextIntent.LANGUAGE_HINDI. Speech2TextIntent.LANGUAGE flag is optional.
 
