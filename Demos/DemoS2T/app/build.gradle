@@ -40,7 +40,7 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.github.wendykierp:JTransforms:3.1'
     compile 'com.mcxiaoke.volley:library:1.0.17'
     compile (name:'s2tlibrary-release', ext:'aar')
