@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.03 2016-06-22
+    - Optimized network payload in Speech2Text
+
 - ##### 1.02 2016-03-09
     - Using http-client, http-mime, http-core library version 4.2.5
 
@@ -86,4 +89,4 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 ### Version
-1.01
+1.03
