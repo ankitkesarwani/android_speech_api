@@ -91,4 +91,4 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 ### Version
-1.03
+1.04
