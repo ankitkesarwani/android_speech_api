@@ -56,6 +56,7 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), Speech2TextIntent.class);
                 i.putExtra(Speech2TextIntent.LANGUAGE, Speech2TextIntent.LANGUAGE_ENGLISH);
+                i.putExtra(Speech2TextIntent.INTENT, Speech2TextIntent.INTENT_ENABLE);
                 startActivityForResult(i, 1);
             }
         });
@@ -74,6 +75,7 @@ public class MainActivityFragment extends Fragment {
                         break;
                     }
                 }
+                textViewList[2].setText(data.getStringExtra("intent"));
             }
         }
     }
