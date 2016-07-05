@@ -114,13 +114,14 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 - The Speech2TextIntent returns a Bundle object having values with keys "action","vehicle","processed_time" and "time". If Speech2TextIntent.INTENT_DISABLE is passed the Bundle is returned with values as empty string for the given keys 
 
-- Example:
-For the string 'book an uber to indira nagar' following is the json output
-{"action": "book_cab", "destination": "indira nagar", "time": "now", "processed_time": "2:10 PM\t05-07-2016", "vehicle": "uber"}
+- Example1:
 
-For the string 'book an uber' following is the json output
+- For the string 'book an uber to indira nagar' following is the json output
+{"action": "book_cab", "destination": "indira nagar", "time": "now", "processed_time": "2:10 PM\t05-07-2016", "vehicle": "uber"}.
+
+- For the string 'book an uber' following is the json output
 {"action": "book_cab", "destination": "UNK", "time": "now", "processed_time": "2:10 PM\t05-07-2016", "vehicle": "uber"}
 
-If the value for a key is not known, its default value is set to "UNK" except for the key "time" which has a default value of "now"
+- If the value for a key is not known, its default value is set to "UNK" except for the key "time" which has a default value of "now"
 ### Version
 1.05
