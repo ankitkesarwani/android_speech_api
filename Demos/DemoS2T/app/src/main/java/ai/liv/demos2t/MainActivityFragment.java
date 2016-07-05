@@ -76,7 +76,11 @@ public class MainActivityFragment extends Fragment {
                     }
                 }
                 Bundle bundle= data.getBundleExtra("intent");
-                textViewList[2].setText("action:"+bundle.getString("action")+" \nvehicle:"+bundle.getString("vehicle")+"\nprocessed_time:"+bundle.getString("processed_time")+"\ntime:"+bundle.getString("time"));
+                String teemp="";
+                for(String key: bundle.keySet()){
+                    teemp+=key+": "+bundle.getString(key)+"\n";
+                }
+                textViewList[2].setText(teemp);
             }
         }
     }
