@@ -75,12 +75,14 @@ public class MainActivityFragment extends Fragment {
                         break;
                     }
                 }
-                Bundle bundle= data.getBundleExtra("intent");
-                String teemp="";
-                for(String key: bundle.keySet()){
-                    teemp+=key+": "+bundle.getString(key)+"\n";
+                if(data.getBundleExtra("intent")!=null){
+                    Bundle bundle= data.getBundleExtra("intent");
+                    String temp="";
+                    for(String key: bundle.keySet()){
+                        temp+=key+": "+bundle.getString(key)+"\n";
+                    }
+                    textViewList[2].setText(temp);
                 }
-                textViewList[2].setText(teemp);
             }
         }
     }
