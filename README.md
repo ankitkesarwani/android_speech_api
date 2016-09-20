@@ -3,6 +3,9 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
+- ##### 1.06 2016-09-20
+    - Optimizing the audio recording
+
 - ##### 1.05 2016-07-05
     - Returning intent object if requested
     
@@ -116,4 +119,4 @@ Examples of INTENT are:
 - If the value for a key is not known, its default value is set to "UNK" except for the key "time" which has a default value of "now"
 
 ### Version
-1.05
+1.06
