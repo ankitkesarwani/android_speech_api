@@ -3,6 +3,9 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
+- ##### 1.08 2017-03-21
+    - Additional Language Support
+
 - ##### 1.07 2016-12-19
     - Stop button for audio recorder
 
@@ -81,23 +84,27 @@ android {
  ```
  Please replace liv.ai_api_token_value with app token obtained from Liv AI. If you don't have a token, please write to us at hello@liv.ai
  
- - Create a Speech2TextIntent and pass necessary flags to it when you wish to trigger Speech recognition. The allowed flags are Speech2TextIntent.LANGUAGE and Speech2TextIntent.INTENT.
+ - Create a Speech2TextIntent and pass necessary flags to it when you wish to trigger Speech recognition. The allowed flags are Speech2TextIntent.LANGUAGE.
  
- - Values of Speech2TextIntent.LANGUAGE flag can be Speech2TextIntent.LANGUAGE_ENGLISH or Speech2TextIntent.LANGUAGE_HINDI. Speech2TextIntent.LANGUAGE flag is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
+ - Values of Speech2TextIntent.LANGUAGE flag can be 
+     - Speech2TextIntent.LANGUAGE_ENGLISH
+     - Speech2TextIntent.LANGUAGE_HINDI
+     - Speech2TextIntent.LANGUAGE_TELEGU
+     - Speech2TextIntent.LANGUAGE_KANNADA
+     - Speech2TextIntent.LANGUAGE_PUNJABI
+     - Speech2TextIntent.LANGUAGE_BENGALI
 
- - Values of Speech2TextIntent.INTENT flag can be Speech2TextIntent.INTENT_ENABLE or Speech2TextIntent.INTENT_DISABLE. Speech2TextIntent.INTENT flag is also optional. The default value is Speech2TextIntent.INTENT_DISABLE.
+ Speech2TextIntent.LANGUAGE flag is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
 
 ```sh
 int REQUEST_CODE = 1;
 Intent i = new Intent(getActivity(), Speech2TextIntent.class);
 // set LANGUAGE. Following line is optional
 i.putExtra(Speech2TextIntent.LANGUAGE, Speech2TextIntent.LANGUAGE_ENGLISH);
-// set INTENT. Following line is optional
-i.putExtra(Speech2TextIntent.INTENT, Speech2TextIntent.INTENT_ENABLE);
 startActivityForResult(i, REQUEST_CODE);
 ```
  
-- Once the speech input is done, you need to read the results from onActivityResult and take appropriate actions. The result can be read from data.getStringArrayExtra("resultList"). If INTENT is enabled, intent can be read from data.getBundleExtra("intent") of the passed intent.
+- Once the speech input is done, you need to read the results from onActivityResult and take appropriate actions. The result can be read from data.getStringArrayExtra("resultList").
 
 ```sh
 @Override
@@ -105,22 +112,8 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 String[] results = data.getStringArrayExtra("resultList"); 
-                // Following line is Optional
-                Bundle bundle= data.getBundleExtra("intent");
             } } }
 ```
 
-- If INTENT is enabled, Speech2TextIntent returns a Bundle object having values with keys "action","vehicle","processed_time" and "time". 
-
-Examples of INTENT are:
-
-- For the sentence 'book an uber to indira nagar' following is the json output
-{"action": "book_cab", "destination": "indira nagar", "time": "now", "processed_time": "2:10 PM\t05-07-2016", "vehicle": "uber"}.
-
-- For the sentence 'book an uber' following is the json output
-{"action": "book_cab", "destination": "UNK", "time": "now", "processed_time": "2:10 PM\t05-07-2016", "vehicle": "uber"}
-
-- If the value for a key is not known, its default value is set to "UNK" except for the key "time" which has a default value of "now"
-
 ### Version
-1.07
+1.08

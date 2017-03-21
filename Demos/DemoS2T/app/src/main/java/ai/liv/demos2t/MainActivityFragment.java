@@ -8,8 +8,11 @@ package ai.liv.demos2t;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +58,10 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), Speech2TextIntent.class);
-                i.putExtra(Speech2TextIntent.LANGUAGE, Speech2TextIntent.LANGUAGE_ENGLISH);
-                i.putExtra(Speech2TextIntent.INTENT, Speech2TextIntent.INTENT_ENABLE);
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                i.putExtra(Speech2TextIntent.LANGUAGE, prefs.getString("pref_language", Speech2TextIntent.LANGUAGE_ENGLISH));
+                //i.putExtra(Speech2TextIntent.INTENT, Speech2TextIntent.INTENT_ENABLE);
+                Log.i("onServiceConnected","startactivity");
                 startActivityForResult(i, 1);
             }
         });
@@ -70,19 +75,20 @@ public class MainActivityFragment extends Fragment {
             if(resultCode == Activity.RESULT_OK){
                 String[] results = data.getStringArrayExtra("resultList");
                 for (int i=0; i<results.length; i++) {
+                    textViewList[i].setText("");
                     textViewList[i].setText(results[i]);
                     if (i == 3) {
                         break;
                     }
                 }
-                if(data.getBundleExtra("intent")!=null){
-                    Bundle bundle= data.getBundleExtra("intent");
-                    String temp="";
-                    for(String key: bundle.keySet()){
-                        temp+=key+": "+bundle.getString(key)+"\n";
-                    }
-                    textViewList[2].setText(temp);
-                }
+//                if(data.getBundleExtra("intent")!=null){
+//                    Bundle bundle= data.getBundleExtra("intent");
+//                    String temp="";
+//                    for(String key: bundle.keySet()){
+//                        temp+=key+": "+bundle.getString(key)+"\n";
+//                    }
+//                    textViewList[2].setText(temp);
+//                }
             }
         }
     }
