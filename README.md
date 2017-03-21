@@ -89,7 +89,7 @@ android {
  - Values of Speech2TextIntent.LANGUAGE flag can be 
      - Speech2TextIntent.LANGUAGE_ENGLISH
      - Speech2TextIntent.LANGUAGE_HINDI
-     - Speech2TextIntent.LANGUAGE_TELEGU
+     - Speech2TextIntent.LANGUAGE_TELUGU
      - Speech2TextIntent.LANGUAGE_KANNADA
      - Speech2TextIntent.LANGUAGE_PUNJABI
      - Speech2TextIntent.LANGUAGE_BENGALI
