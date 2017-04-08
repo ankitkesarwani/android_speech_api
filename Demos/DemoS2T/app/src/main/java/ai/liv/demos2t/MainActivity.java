@@ -85,6 +85,20 @@ public class MainActivity extends AppCompatActivity {
                 editor.commit();
             }
             else if(title.equals(Speech2TextIntent.LANGUAGE_HINDI)){
+                item.setTitle(Speech2TextIntent.LANGUAGE_MARATHI);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("pref_language", Speech2TextIntent.LANGUAGE_MARATHI);
+                editor.commit();
+                return true;
+            }
+            else if (title.equals(Speech2TextIntent.LANGUAGE_MARATHI)) {
+                item.setTitle(Speech2TextIntent.LANGUAGE_GUJARATI);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("pref_language", Speech2TextIntent.LANGUAGE_GUJARATI);
+                editor.commit();
+                return true;
+            }
+            else if (title.equals(Speech2TextIntent.LANGUAGE_GUJARATI)) {
                 item.setTitle(Speech2TextIntent.LANGUAGE_ENGLISH);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("pref_language", Speech2TextIntent.LANGUAGE_ENGLISH);

@@ -3,6 +3,12 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
+- ##### 1.10 2017-04-08
+    - Additional Language Support(MARATHI,GUJARATI)
+
+- ##### 1.09 2017-04-05
+    - Internal features
+
 - ##### 1.08 2017-03-21
     - Additional Language Support
 
@@ -93,6 +99,9 @@ android {
      - Speech2TextIntent.LANGUAGE_KANNADA
      - Speech2TextIntent.LANGUAGE_PUNJABI
      - Speech2TextIntent.LANGUAGE_BENGALI
+     - Speech2TextIntent.LANGUAGE_GUJARATI
+     - Speech2TextIntent.LANGUAGE_MARATHI
+
 
  Speech2TextIntent.LANGUAGE flag is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
 
@@ -116,4 +125,4 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 ### Version
-1.08
+1.10
