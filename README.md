@@ -46,18 +46,23 @@ Including S2Tlibrary in Android project
 2. Copy the s2t-release library in the libs folder located in the apps folder of your Android application
 
 3. In the app build.gradle, add following dependencies
+```sh
       compile 'com.mcxiaoke.volley:library:1.0.17'
       compile 'com.github.wendykierp:JTransforms:3.1'
       compile (name:'s2tlibrary-release', ext:'aar')
+```
 
 4. In the app build.gradle, add following snippet
+```sh
 repositories {
    flatDir {
        dirs 'libs'
    }
 }
+```
 
 5. In app build.gradle, add the following inside android tag -
+```sh
     android {
       packagingOptions {
        exclude 'META-INF/DEPENDENCIES.txt'
@@ -72,28 +77,31 @@ repositories {
        exclude 'META-INF/notice.txt'
     }
   }
-
+```
 
 6. In proguard-rules.pro, include the following lines
-
+```sh
 -keep class android.support.v7.** { *; }
 -keep interface android.support.v7.** { *; }
 -dontwarn org.apache.commons.**
 -keep class org.apache.http.** { *; }
 -dontwarn org.apache.http.**
 -keepattributes EnclosingMethod
-
+```
 
 Using s2tlibrary in application code
 
 1. In strings.java located at app/src/res/values/, add the following line
+```sh
       <string name="livtoken"><liv.ai_api_token_value></string>
+```
 
   Please replace liv.ai_api_token_value with app token obtained from Liv AI. If you dont have a token, please write to us at hello@liv.ai
 
 
 2. Create a Speech2TextIntentCallback object to listen to the events from our Library. Transcription results can be read in onTranscriptionReceived() and Error thrown can be read in onError() callbacks.
 
+```java
       Speech2TextIntent.Speech2TextIntentCallback callbackFromS2T = new Speech2TextIntent.Speech2TextIntentCallback() {
             @Override
             public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
@@ -113,23 +121,29 @@ Using s2tlibrary in application code
               }
             }
       };
+```
 
 2. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
 
+```java
       Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
                                 .setLanguage(Speech2TextIntent.LANGUAGE_HINDI)
                                 .setView(Speech2TextIntent.VIEW_KEYBOARD)
                                 .build();
-
+```
 
 3. Call the start service method when the recording and transcription needs to be started
 
+```java
     s2TIntent.setLanguage(lang);
     s2TIntent.startService();
-
+```
 
 4. There is also a provision to stop the Speech2TextIntent service with
+
+```java
     s2TIntent.stopService();
+```
 
 
 The mechanism attaches itself to the Activity Lifecycle, so there is no specific need of stopping service from those methods.
