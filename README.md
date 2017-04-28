@@ -154,7 +154,8 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 -   setLanguage() is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
 
     setLanguage() supported parameters:
-    '''java
+    ```java
+
         Speech2TextIntent.LANGUAGE_ENGLISH
         Speech2TextIntent.LANGUAGE_HINDI
         Speech2TextIntent.LANGUAGE_TELUGU
@@ -163,14 +164,14 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
         Speech2TextIntent.LANGUAGE_BENGALI
         Speech2TextIntent.LANGUAGE_GUJARATI
         Speech2TextIntent.LANGUAGE_MARATHI
-    '''
+    ```
 
 -   setView() is optional. The default value is Speech2TextIntent.VIEW_KEYBOARD
     setView() supported parameters:
-    '''java
+    ```java
         Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
-    '''
+    ```
 
 Version
 
