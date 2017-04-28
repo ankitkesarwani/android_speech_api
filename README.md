@@ -4,7 +4,7 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
--###### 1.12 2017-04-28
+- ##### 1.12 2017-04-28
     - Changed Activity interface to callback via service interface in the library
 
 - ##### 1.11 2017-04-20
@@ -149,10 +149,12 @@ Using s2tlibrary in application code
 The mechanism attaches itself to the Activity Lifecycle, so there is no specific need of stopping service from those methods.
 
 
-NOTE:
+### NOTE:
 
 -   setLanguage() is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
+
     setLanguage() supported parameters:
+    '''java
         Speech2TextIntent.LANGUAGE_ENGLISH
         Speech2TextIntent.LANGUAGE_HINDI
         Speech2TextIntent.LANGUAGE_TELUGU
@@ -161,11 +163,14 @@ NOTE:
         Speech2TextIntent.LANGUAGE_BENGALI
         Speech2TextIntent.LANGUAGE_GUJARATI
         Speech2TextIntent.LANGUAGE_MARATHI
+    '''
 
 -   setView() is optional. The default value is Speech2TextIntent.VIEW_KEYBOARD
     setView() supported parameters:
+    '''java
         Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
+    '''
 
 Version
 
