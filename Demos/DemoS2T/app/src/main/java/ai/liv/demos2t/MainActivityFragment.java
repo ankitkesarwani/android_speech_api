@@ -20,19 +20,23 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import ai.liv.s2tlibrary.Speech2TextIntent;
+import ai.liv.s2tlibrary.model.Transcription;
 
 /**
  * Created by garima on 01/03/16.
  */
 public class MainActivityFragment extends Fragment {
+
+
     private static final String TAG = MainActivityFragment.class.getName();
-
     ImageButton b1;
-    TextView contentView1, contentView2, contentView3, contentView4;
-    TextView[] textViewList = new TextView[4];
+    TextView contentView1;
     ProgressBar pb;
-
+    Speech2TextIntent s2TIntent;
+    String lang;
 
     public MainActivityFragment() {
     }
@@ -43,54 +47,44 @@ public class MainActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main,
                 container, false);
         contentView1 = (TextView) view.findViewById(R.id.contentTextView1);
-        contentView2 = (TextView) view.findViewById(R.id.contentTextView2);
-        contentView3 = (TextView) view.findViewById(R.id.contentTextView3);
-        contentView4 = (TextView) view.findViewById(R.id.contentTextView4);
-        textViewList[0] = contentView1;
-        textViewList[1] = contentView2;
-        textViewList[2] = contentView3;
-        textViewList[3] = contentView4;
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         pb = (ProgressBar) view.findViewById(R.id.progress_indicator);
 
         b1 = (ImageButton) view.findViewById(R.id.button1);
+
+        s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), new Speech2TextIntent.Speech2TextIntentCallback() {
+            @Override
+            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
+                if(!isDetached()) {
+                    if (transcriptions.size() > 0) {
+                        if(getView() != null) {
+                            contentView1.setText(transcriptions.get(0).getText());
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onError(S2TError error) {
+                if(error.errorCode == S2TError.ERROR_NO_USER_ID){
+                    Log.d(TAG, "No user id");
+                }
+
+            }
+
+        }).setLanguage(lang).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
+
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), Speech2TextIntent.class);
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                i.putExtra(Speech2TextIntent.LANGUAGE, prefs.getString("pref_language", Speech2TextIntent.LANGUAGE_ENGLISH));
-                //i.putExtra(Speech2TextIntent.INTENT, Speech2TextIntent.INTENT_ENABLE);
-                Log.i("onServiceConnected","startactivity");
-                startActivityForResult(i, 1);
+                lang = prefs.getString("pref_language", Speech2TextIntent.LANGUAGE_ENGLISH);
+                s2TIntent.setLanguage(lang);
+                s2TIntent.startService();
             }
         });
         return view;
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
-                String[] results = data.getStringArrayExtra("resultList");
-                for (int i=0; i<results.length; i++) {
-                    textViewList[i].setText("");
-                    textViewList[i].setText(results[i]);
-                    if (i == 3) {
-                        break;
-                    }
-                }
-//                if(data.getBundleExtra("intent")!=null){
-//                    Bundle bundle= data.getBundleExtra("intent");
-//                    String temp="";
-//                    for(String key: bundle.keySet()){
-//                        temp+=key+": "+bundle.getString(key)+"\n";
-//                    }
-//                    textViewList[2].setText(temp);
-//                }
-            }
-        }
-    }
-
 }
