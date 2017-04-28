@@ -3,6 +3,10 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
+
+-###### 1.12 2017-04-28
+    - Changed Activity interface to callback via service interface in the library
+
 - ##### 1.11 2017-04-20
     - TargetSDK version 25 
 
@@ -35,32 +39,27 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 - ##### 1.01 2016-03-01
    - Released library with Speech2TextIntent to be triggered at the beginning of speech recognition
+Including S2Tlibrary in Android project
 
+1. Create a new project in Android Studio or Open an existing application project
 
-### Including S2Tlibrary in Android project
+2. Copy the s2t-release library in the libs folder located in the apps folder of your Android application
 
-- Create a new project in Android Studio or Open an existing application project
-- Copy the s2t-release library in the **libs** folder located in the **apps** folder of your Android application
-- In the app build.gradle, add following dependencies 
-```sh
-compile 'com.mcxiaoke.volley:library:1.0.17'
-compile 'com.github.wendykierp:JTransforms:3.1'
-compile (name:'s2tlibrary-release', ext:'aar')
-```
+3. In the app build.gradle, add following dependencies
+      compile 'com.mcxiaoke.volley:library:1.0.17'
+      compile 'com.github.wendykierp:JTransforms:3.1'
+      compile (name:'s2tlibrary-release', ext:'aar')
 
-- In the app build.gradle, add following snippet
-```sh
+4. In the app build.gradle, add following snippet
 repositories {
    flatDir {
        dirs 'libs'
    }
 }
-```
 
-- In app build.gradle, add the following inside android tag -
-```sh
-android {
-    packagingOptions {
+5. In app build.gradle, add the following inside android tag -
+    android {
+      packagingOptions {
        exclude 'META-INF/DEPENDENCIES.txt'
        exclude 'META-INF/DEPENDENCIES'
        exclude 'META-INF/dependencies.txt'
@@ -72,60 +71,88 @@ android {
        exclude 'META-INF/NOTICE'
        exclude 'META-INF/notice.txt'
     }
-}
-```
+  }
 
-- In proguard-rules.pro, include the following lines -
-```sh
+
+6. In proguard-rules.pro, include the following lines
+
 -keep class android.support.v7.** { *; }
 -keep interface android.support.v7.** { *; }
 -dontwarn org.apache.commons.**
 -keep class org.apache.http.** { *; }
 -dontwarn org.apache.http.**
 -keepattributes EnclosingMethod
-```
 
 
-### Using s2tlibrary in application code
- - In strings.java located at app/src/res/values/, add the following line 
- ```sh
- <string name="livtoken"><liv.ai_api_token_value></string>
- ```
- Please replace liv.ai_api_token_value with app token obtained from Liv AI. If you don't have a token, please write to us at hello@liv.ai
- 
- - Create a Speech2TextIntent and pass necessary flags to it when you wish to trigger Speech recognition. The allowed flags are Speech2TextIntent.LANGUAGE.
- 
- - Values of Speech2TextIntent.LANGUAGE flag can be 
-     - Speech2TextIntent.LANGUAGE_ENGLISH
-     - Speech2TextIntent.LANGUAGE_HINDI
-     - Speech2TextIntent.LANGUAGE_TELUGU
-     - Speech2TextIntent.LANGUAGE_KANNADA
-     - Speech2TextIntent.LANGUAGE_PUNJABI
-     - Speech2TextIntent.LANGUAGE_BENGALI
-     - Speech2TextIntent.LANGUAGE_GUJARATI
-     - Speech2TextIntent.LANGUAGE_MARATHI
+Using s2tlibrary in application code
+
+1. In strings.java located at app/src/res/values/, add the following line
+      <string name="livtoken"><liv.ai_api_token_value></string>
+
+  Please replace liv.ai_api_token_value with app token obtained from Liv AI. If you dont have a token, please write to us at hello@liv.ai
 
 
- Speech2TextIntent.LANGUAGE flag is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
+2. Create a Speech2TextIntentCallback object to listen to the events from our Library. Transcription results can be read in onTranscriptionReceived() and Error thrown can be read in onError() callbacks.
 
-```sh
-int REQUEST_CODE = 1;
-Intent i = new Intent(getActivity(), Speech2TextIntent.class);
-// set LANGUAGE. Following line is optional
-i.putExtra(Speech2TextIntent.LANGUAGE, Speech2TextIntent.LANGUAGE_ENGLISH);
-startActivityForResult(i, REQUEST_CODE);
-```
- 
-- Once the speech input is done, you need to read the results from onActivityResult and take appropriate actions. The result can be read from data.getStringArrayExtra("resultList").
+      Speech2TextIntent.Speech2TextIntentCallback callbackFromS2T = new Speech2TextIntent.Speech2TextIntentCallback() {
+            @Override
+            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
+                //Write Code to handle the list of transcriptions received with their confidence scores
+                if (transcriptions.size() > 0) {
+                    for(Transcription transcription : transcriptions){
+                      Log.d(TAG, "Transcription:"+transcription.getText()+", Confidence:"+transcription.getConfidence());
+                    }
+                }
+            }
 
-```sh
-@Override
-public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
-                String[] results = data.getStringArrayExtra("resultList"); 
-            } } }
-```
+            @Override
+            public void onError(S2TError error) {
+                //Write code to handle each error from the error codes by comparing error.errorCode to constants in Error class
+              if(error.errorCode == S2TError.ERROR_NO_USER_ID){
+                    Log.d(TAG, "No user id,"+error.message);
+              }
+            }
+      };
 
-### Version
-1.11
+2. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
+
+      Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
+                                .setLanguage(Speech2TextIntent.LANGUAGE_HINDI)
+                                .setView(Speech2TextIntent.VIEW_KEYBOARD)
+                                .build();
+
+
+3. Call the start service method when the recording and transcription needs to be started
+
+    s2TIntent.setLanguage(lang);
+    s2TIntent.startService();
+
+
+4. There is also a provision to stop the Speech2TextIntent service with
+    s2TIntent.stopService();
+
+
+The mechanism attaches itself to the Activity Lifecycle, so there is no specific need of stopping service from those methods.
+
+
+NOTE:
+
+-   setLanguage() is optional. The default value is Speech2TextIntent.LANGUAGE_ENGLISH.
+    setLanguage() supported parameters:
+        Speech2TextIntent.LANGUAGE_ENGLISH
+        Speech2TextIntent.LANGUAGE_HINDI
+        Speech2TextIntent.LANGUAGE_TELUGU
+        Speech2TextIntent.LANGUAGE_KANNADA
+        Speech2TextIntent.LANGUAGE_PUNJABI  
+        Speech2TextIntent.LANGUAGE_BENGALI
+        Speech2TextIntent.LANGUAGE_GUJARATI
+        Speech2TextIntent.LANGUAGE_MARATHI
+
+-   setView() is optional. The default value is Speech2TextIntent.VIEW_KEYBOARD
+    setView() supported parameters:
+        Speech2TextIntent.VIEW_KEYBOARD
+        Speech2TextIntent.VIEW_POPUP
+
+Version
+
+1.12
