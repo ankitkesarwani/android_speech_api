@@ -23,6 +23,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ai.liv.s2tlibrary.Speech2TextIntent;
+import ai.liv.s2tlibrary.model.S2TError;
 import ai.liv.s2tlibrary.model.Transcription;
 
 /**

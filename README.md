@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.13 2017-05-2
+    - Runtime permissions for window overlay, animation change
+
 - ##### 1.12 2017-04-28
     - Changed Activity interface to callback via service interface in the library
 
@@ -175,4 +178,4 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 Version
 
-1.12
+1.13
