@@ -176,6 +176,16 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
         Speech2TextIntent.VIEW_POPUP
     ```
 
+-   onError() parameter error code values can be checked comparing to the constants below:
+    ```java
+            S2TError.ERROR_NO_INTERNET;
+            S2TError.ERROR_NO_USER_ID;
+            S2TError.ERROR_RECORDING_PERMISSION_NOT_AVAILABLE;
+            S2TError.ERROR_READ_EXTERNAL_STORAGE_NOT_AVAILABLE;
+            S2TError.ERROR_WRITE_EXTERNAL_STORAGE_NOT_AVAILABLE;
+            S2TError.ERROR_WINDOW_OVERLAY_PERMISSION_RESTART_REQUIRED;
+    ```
+
 Version
 
 1.13
