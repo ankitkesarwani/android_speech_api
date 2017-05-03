@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.14 2017-05-3
+    - Error framework and overlay bug fixes
+
 - ##### 1.13 2017-05-2
     - Runtime permissions for window overlay, animation change
 
@@ -188,4 +191,4 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 Version
 
-1.13
+1.14
