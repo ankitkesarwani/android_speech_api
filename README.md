@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.15 2017-05-5
+    - Close functionality and callback, bug fixes
+
 - ##### 1.14 2017-05-3
     - Error framework and overlay bug fixes
 
@@ -126,6 +129,11 @@ Using s2tlibrary in application code
                     Log.d(TAG, "No user id,"+error.message);
               }
             }
+
+            @Override
+            public void onRecordingCancelled() {
+                //Called when the user explicitly presses the close button
+            }
       };
 ```
 
@@ -191,4 +199,4 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 Version
 
-1.14
+1.15
