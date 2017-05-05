@@ -143,6 +143,7 @@ Using s2tlibrary in application code
       Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
                                 .setLanguage(Speech2TextIntent.LANGUAGE_HINDI)
                                 .setView(Speech2TextIntent.VIEW_KEYBOARD)
+                                .setHeightInPixels(540) //Height in Pixels for the view wanted, default height is 260dp
                                 .build();
 ```
 
@@ -186,6 +187,8 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
         Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
     ```
+
+-   setHeightInPixels() can be optionally used to set height of the recording view. The default value is 260dp(in pixels)
 
 -   onError() parameter error code values can be checked comparing to the constants below:
     ```java
