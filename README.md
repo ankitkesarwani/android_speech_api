@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.16 2017-05-17
+    - More Error handling
+
 - ##### 1.15 2017-05-5
     - Close functionality and callback, bug fixes
 
@@ -192,12 +195,17 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 -   onError() parameter error code values can be checked comparing to the constants below:
     ```java
-            S2TError.ERROR_NO_INTERNET;
-            S2TError.ERROR_NO_USER_ID;
-            S2TError.ERROR_RECORDING_PERMISSION_NOT_AVAILABLE;
-            S2TError.ERROR_READ_EXTERNAL_STORAGE_NOT_AVAILABLE;
-            S2TError.ERROR_WRITE_EXTERNAL_STORAGE_NOT_AVAILABLE;
-            S2TError.ERROR_WINDOW_OVERLAY_PERMISSION_RESTART_REQUIRED;
+            S2TError.ERROR_NO_INTERNET
+            S2TError.ERROR_NO_USER_ID
+            S2TError.ERROR_RECORDING_PERMISSION_NOT_AVAILABLE
+            S2TError.ERROR_READ_EXTERNAL_STORAGE_NOT_AVAILABLE
+            S2TError.ERROR_WRITE_EXTERNAL_STORAGE_NOT_AVAILABLE
+            S2TError.ERROR_WINDOW_OVERLAY_PERMISSION_RESTART_REQUIRED
+            S2TError.ERROR_IN_AUDIO
+            S2TError.ERROR_NO_AUDIO_FILE_SENT
+            S2TError.ERROR_UNAUTHORIZED_REQUEST
+            S2TError.ERROR_SERVER_ERROR
+
     ```
 
 Version

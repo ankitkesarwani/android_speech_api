@@ -68,6 +68,11 @@ public class MainActivityFragment extends Fragment {
             }
 
             @Override
+            public void onRecordingCancelled() {
+
+            }
+
+            @Override
             public void onError(S2TError error) {
                 if(error.errorCode == S2TError.ERROR_NO_USER_ID){
                     Log.d(TAG, "No user id");
