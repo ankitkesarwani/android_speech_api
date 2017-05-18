@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "22.0.1"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "ai.liv.demos2t"
@@ -44,4 +44,5 @@ dependencies {
     compile 'com.github.wendykierp:JTransforms:3.1'
     compile 'com.mcxiaoke.volley:library:1.0.17'
     compile (name:'s2tlibrary-release', ext:'aar')
+
 }
