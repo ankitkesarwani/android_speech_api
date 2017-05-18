@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.18 2017-05-18
+    - Crashlytics integrated
+
 - ##### 1.17 2017-05-18
     - Bugfixes related to service instantiation
 
@@ -210,6 +213,11 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
             S2TError.ERROR_SERVER_ERROR
 
     ```
+
+
+-   Xiaomi MIUI OS by default doesn't give permission to draw overlay above apps and also doesn't allow you to get it on runtime like other OSes. So eventhough the recording is started UI wouldn't be drawn unless the permission is provided. 
+
+Users will have to go to get it as described at http://en.miui.com/thread-304844-1-1.html.
 
 Version
 
