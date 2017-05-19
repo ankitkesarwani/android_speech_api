@@ -225,4 +225,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.15
+1.19
