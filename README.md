@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.19 2017-05-19
+    - Google Analytics integrated
+
 - ##### 1.18 2017-05-18
     - Crashlytics integrated
 
@@ -68,6 +71,7 @@ Including S2Tlibrary in Android project
       compile 'com.mcxiaoke.volley:library:1.0.17'
       compile 'com.github.wendykierp:JTransforms:3.1'
       compile (name:'s2tlibrary-release', ext:'aar')
+      compile 'com.google.android.gms:play-services-analytics:10.2.4'
 ```
 
 4. In the app build.gradle, add following snippet
