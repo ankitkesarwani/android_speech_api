@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.20 2017-05-22
+    - Split functionality, network and speed optimizations, bug fixes
+
 - ##### 1.19 2017-05-19
     - Google Analytics integrated
 
@@ -225,4 +228,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.19
+1.20
