@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.21 2017-05-24
+    - Analytics Crash fix
+
 - ##### 1.20 2017-05-22
     - Split functionality, network and speed optimizations, bug fixes
 
