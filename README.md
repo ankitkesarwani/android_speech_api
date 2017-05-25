@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.22 2017-05-25
+    - Added Activity support for apps not wanting to create a window overlay and take draw over apps permission
+
 - ##### 1.21 2017-05-24
     - Analytics Crash fix
 
@@ -203,7 +206,8 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 -   setView() is optional. The default value is Speech2TextIntent.VIEW_KEYBOARD
     setView() supported parameters:
     ```java
-        Speech2TextIntent.VIEW_KEYBOARD
+        Speech2TextIntent.ACTIVITY_POPUP
+	Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
     ```
 
@@ -231,4 +235,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.20
+1.22
