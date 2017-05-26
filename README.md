@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.23 2017-05-26
+    - Slow internet handling, timeout changes, rotation fixes
+
 - ##### 1.22 2017-05-25
     - Added Activity support for apps not wanting to create a window overlay and take draw over apps permission
 
@@ -235,4 +238,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.22
+1.23
