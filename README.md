@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.25 2017-05-27
+    - Performance optimization
+
 - ##### 1.24 2017-05-26
     - Slow internet handling, timeout changes, rotation fixes
 
@@ -238,4 +241,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.24
+1.25
