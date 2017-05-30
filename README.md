@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.26 2017-05-30
+    - Changed scheme to index based splitting and syncing, space after every transcription
+
 - ##### 1.25 2017-05-27
     - Performance optimization
 
