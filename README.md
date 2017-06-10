@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.32 2017-06-10
+    - Every start service call kills current service and start a new one
+
 - ##### 1.31 2017-06-09
     - Bug fixes
 
@@ -248,6 +251,9 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 Users will have to go to get it as described at http://en.miui.com/thread-304844-1-1.html.
 
+
+-  It is advised to developers integrating the aar to restrict launch of SDK to only once till the recording transaction is over, disable button click after launch or on the lines. Eventhough multiple calls multiple startService() has been handled, it can lead to inconsistent conditions/states of the SDK.
+
 Version
 
-1.31
+1.32
