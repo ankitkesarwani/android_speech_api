@@ -74,10 +74,7 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public void onError(S2TError error) {
-                if(error.errorCode == S2TError.ERROR_NO_USER_ID){
-                    Log.d(TAG, "No user id");
-                }
-
+                Log.d(TAG, "Error:"+error.message+error.errorCode);
             }
 
         }).setLanguage(lang).setView(Speech2TextIntent.VIEW_KEYBOARD).build();

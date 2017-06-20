@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.34 2017-06-16
+    - Changed SDK integration to host on private Maven Repository 
+
 - ##### 1.32 2017-06-10
     - Every start service call kills current service and start a new one
 
@@ -91,51 +94,25 @@ Including S2Tlibrary in Android project
 
 1. Create a new project in Android Studio or Open an existing application project
 
-2. Copy the s2t-release library in the libs folder located in the apps folder of your Android application
+2. In the app build.gradle, add following outside dependencies, outermost scope
 
-3. In the app build.gradle, add following dependencies
-```sh
-      compile 'com.mcxiaoke.volley:library:1.0.17'
-      compile 'com.github.wendykierp:JTransforms:3.1'
-      compile (name:'s2tlibrary-release', ext:'aar')
-      compile 'com.google.android.gms:play-services-analytics:10.2.4'
-```
-
-4. In the app build.gradle, add following snippet
 ```sh
 repositories {
-   flatDir {
-       dirs 'libs'
-   }
+    mavenCentral()
+    maven {
+        url 'https://maven.fabric.io/public'
+    }
+    maven {
+        url "https://mymavenrepo.com/repo/5BmmKbLa0MoxjZW3GYAS/"
+    }
 }
 ```
 
-5. In app build.gradle, add the following inside android tag -
+3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    android {
-      packagingOptions {
-       exclude 'META-INF/DEPENDENCIES.txt'
-       exclude 'META-INF/DEPENDENCIES'
-       exclude 'META-INF/dependencies.txt'
-       exclude 'META-INF/LICENSE.txt'
-       exclude 'META-INF/LICENSE'
-       exclude 'META-INF/license.txt'
-       exclude 'META-INF/LGPL2.1'
-       exclude 'META-INF/NOTICE.txt'
-       exclude 'META-INF/NOTICE'
-       exclude 'META-INF/notice.txt'
+    compile ('ai.liv:s2tlibrary:1.34@aar') {
+        transitive = true
     }
-  }
-```
-
-6. In proguard-rules.pro, include the following lines
-```sh
--keep class android.support.v7.** { *; }
--keep interface android.support.v7.** { *; }
--dontwarn org.apache.commons.**
--keep class org.apache.http.** { *; }
--dontwarn org.apache.http.**
--keepattributes EnclosingMethod
 ```
 
 Using s2tlibrary in application code
@@ -225,7 +202,7 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
     setView() supported parameters:
     ```java
         Speech2TextIntent.ACTIVITY_POPUP
-	Speech2TextIntent.VIEW_KEYBOARD
+	      Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
     ```
 
@@ -256,4 +233,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.32
+1.34

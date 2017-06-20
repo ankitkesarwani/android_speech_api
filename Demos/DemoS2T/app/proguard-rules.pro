@@ -15,9 +15,3 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--keep class android.support.v7.** { *; }
--keep interface android.support.v7.** { *; }
--dontwarn org.apache.commons.**
--keep class org.apache.http.** { *; }
--dontwarn org.apache.http.**
--keepattributes EnclosingMethod
