@@ -38,9 +38,6 @@ android {
 repositories {
     mavenCentral()
     maven {
-        url 'https://maven.fabric.io/public'
-    }
-    maven {
         url "https://mymavenrepo.com/repo/5BmmKbLa0MoxjZW3GYAS/"
     }
 }
@@ -48,7 +45,7 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.+'
-    compile ('ai.liv:s2tlibrary:1.34.1@aar') {
+    compile ('ai.liv:s2tlibrary:1.35@aar') {
         transitive = true
     }
 }

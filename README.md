@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.35 2017-06-21
+    - Migration from Fabric Crashlytics to HockeyApp for crashes and events
+
 - ##### 1.34 2017-06-16
     - Changed SDK integration to host on private Maven Repository 
 
@@ -90,6 +93,8 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 - ##### 1.01 2016-03-01
    - Released library with Speech2TextIntent to be triggered at the beginning of speech recognition
+
+   
 Including S2Tlibrary in Android project
 
 1. Create a new project in Android Studio or Open an existing application project
@@ -100,9 +105,6 @@ Including S2Tlibrary in Android project
 repositories {
     mavenCentral()
     maven {
-        url 'https://maven.fabric.io/public'
-    }
-    maven {
         url "https://mymavenrepo.com/repo/5BmmKbLa0MoxjZW3GYAS/"
     }
 }
@@ -110,7 +112,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.34@aar') {
+    compile ('ai.liv:s2tlibrary:1.35@aar') {
         transitive = true
     }
 ```
@@ -233,4 +235,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.34
+1.35
