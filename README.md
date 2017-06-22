@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.36 2017-06-22
+    - NPE Volley bug fix
+
 - ##### 1.35 2017-06-21
     - Migration from Fabric Crashlytics to HockeyApp for crashes and events
 
@@ -235,4 +238,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.35
+1.36
