@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.38 2017-07-05
+    - RTT Miscalculation fix
+
 - ##### 1.37 2017-07-05
     - Multiple language support, crash fixes, stability fixes
 
