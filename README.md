@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.37 2017-07-05
+    - Multiple language support, crash fixes, stability fixes
+
 - ##### 1.36 2017-06-22
     - NPE Volley bug fix
 
@@ -238,4 +241,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.36
+1.37
