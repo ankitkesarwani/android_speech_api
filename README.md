@@ -121,7 +121,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.35@aar') {
+    compile ('ai.liv:s2tlibrary:1.38@aar') {
         transitive = true
     }
 ```
@@ -244,4 +244,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.37
+1.38
