@@ -3,7 +3,8 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
-
+- ##### 1.44 2017-08-01
+    - UI Changes, event tracking, Tamil support, minSDK is 16 now
 - ##### 1.39 2017-07-06
     - Pause Crash fix
 
@@ -210,6 +211,7 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
         Speech2TextIntent.LANGUAGE_BENGALI
         Speech2TextIntent.LANGUAGE_GUJARATI
         Speech2TextIntent.LANGUAGE_MARATHI
+        Speech2TextIntent.LANGUAGE_TAMIL
     ```
 
 -   setView() is optional. The default value is Speech2TextIntent.VIEW_KEYBOARD
@@ -247,4 +249,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.39
+1.44

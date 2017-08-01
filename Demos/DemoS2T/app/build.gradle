@@ -2,50 +2,32 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
-
+    buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "ai.liv.demos2t"
-        minSdkVersion 18
+        applicationId "com.example.myapplication"
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/dependencies.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude '' +
-                'META-INF/license.txt'
-        exclude 'META-INF/LGPL2.1'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/notice.txt'
-    }
-}
-
-
-repositories {
-    mavenCentral()
-    maven {
-        url "https://mymavenrepo.com/repo/5BmmKbLa0MoxjZW3GYAS/"
-    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.+'
-    compile ('ai.liv:s2tlibrary:1.35@aar') {
+
+    compile ('ai.liv:s2tlibrary:1.44@aar') {
         transitive = true
     }
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
 }
