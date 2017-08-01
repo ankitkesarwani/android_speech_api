@@ -125,7 +125,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.39@aar') {
+    compile ('ai.liv:s2tlibrary:1.44@aar') {
         transitive = true
     }
 ```
