@@ -3,8 +3,13 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 18, Android 4.3 (JELLY_BEAN_MR2) 
 
 ### Changelog
+
+- ##### 1.45 2017-08-02
+    - Open permissions for Xiaomi, better no internet error handling
+
 - ##### 1.44 2017-08-01
     - UI Changes, event tracking, Tamil support, minSDK is 16 now
+
 - ##### 1.39 2017-07-06
     - Pause Crash fix
 
@@ -125,7 +130,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.44@aar') {
+    compile ('ai.liv:s2tlibrary:1.45@aar') {
         transitive = true
     }
 ```
@@ -249,4 +254,4 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 Version
 
-1.44
+1.45
