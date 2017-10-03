@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.48 2017-10-02
+    - OkHTTP, animation optimization, code rearrangement/ major refactor 480ms part size, 8k bug fix
+
 - ##### 1.45 2017-08-02
     - Open permissions for Xiaomi, better no internet error handling
 
@@ -130,7 +133,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.45@aar') {
+    compile ('ai.liv:s2tlibrary:1.48@aar') {
         transitive = true
     }
 ```
@@ -252,6 +255,3 @@ Users will have to go to get it as described at http://en.miui.com/thread-304844
 
 -  It is advised to developers integrating the aar to restrict launch of SDK to only once till the recording transaction is over, disable button click after launch or on the lines. Eventhough multiple calls multiple startService() has been handled, it can lead to inconsistent conditions/states of the SDK.
 
-Version
-
-1.45

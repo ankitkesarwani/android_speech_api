@@ -19,12 +19,20 @@ android {
     }
 }
 
-dependencies {
+repositories {
+    mavenCentral()
+    maven {
+        url "https://mymavenrepo.com/repo/5BmmKbLa0MoxjZW3GYAS/"
+    }
+    jcenter()
+}
 
-    compile ('ai.liv:s2tlibrary:1.44@aar') {
+dependencies {
+    compile ('ai.liv:s2tlibrary:1.48@aar') {
         transitive = true
     }
 
+    compile 'com.android.volley:volley:1.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
