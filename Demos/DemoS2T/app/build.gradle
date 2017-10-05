@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    compile ('ai.liv:s2tlibrary:1.48@aar') {
+    compile ('ai.liv:s2tlibrary:1.49@aar') {
         transitive = true
     }
 
