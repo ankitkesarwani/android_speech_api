@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.50 2017-11-08
+    - Malayalam, language segregation in url
+
 - ##### 1.49 2017-10-05
     - Bug Fixes
 
@@ -136,7 +139,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.49@aar') {
+    compile ('ai.liv:s2tlibrary:1.50@aar') {
         transitive = true
     }
 ```
