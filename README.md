@@ -121,8 +121,8 @@ Speech2Text library for Android can be integrated in Android applications. The l
 - ##### 1.01 2016-03-01
    - Released library with Speech2TextIntent to be triggered at the beginning of speech recognition
 
-   
-Including S2Tlibrary in Android project
+   
+### Including s2tlibrary:
 
 1. Create a new project in Android Studio or Open an existing application project
 
@@ -144,7 +144,7 @@ repositories {
     }
 ```
 
-Using s2tlibrary in application code
+### Invoking s2tlibrary:
 
 1. In strings.java located at app/src/res/values/, add the following line
 ```sh
@@ -183,7 +183,7 @@ Using s2tlibrary in application code
       };
 ```
 
-2. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
+3. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
 
 ```java
       Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
@@ -193,7 +193,7 @@ Using s2tlibrary in application code
                                 .build();
 ```
 
-3. Call the start service method when the recording and transcription needs to be started
+4. Call the start service method when the recording and transcription needs to be started
 
 ```java
     s2TIntent.setLanguage(lang);
