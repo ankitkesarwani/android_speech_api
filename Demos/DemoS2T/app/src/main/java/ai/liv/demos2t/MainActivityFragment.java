@@ -77,7 +77,7 @@ public class MainActivityFragment extends Fragment {
                 Log.d(TAG, "Error:"+error.message+error.errorCode);
             }
 
-        }).setLanguage(lang).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
+        }).setLanguage(lang).setQueryType(Speech2TextIntent.QUERY_PHONE).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
 
 
         b1.setOnClickListener(new View.OnClickListener() {
