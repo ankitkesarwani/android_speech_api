@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.56 2018-04-19
+    - Bug fixes, improved streaming, query type integration
+
 - ##### 1.53 2018-03-23
     - Fix for Android 8.0 devices, animation changes, api changes to support experimental streaming
     
@@ -142,7 +145,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.53@aar') {
+    compile ('ai.liv:s2tlibrary:1.56@aar') {
         transitive = true
     }
 ```
@@ -159,7 +162,7 @@ repositories {
 
 2. Create a Speech2TextIntentCallback object to listen to the events from our Library. Transcription results can be read in onTranscriptionReceived() and Error thrown can be read in onError() callbacks.
 
-NOTE: onStreamingTranscriptionReceived() has been added in v1.53 which is still under testing and not recommended to be used with the setStreaming(True/False) api as described below.
+NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still under testing and not recommended to be used with the setStreaming(True/False) api as described below.
 
 ```java
       Speech2TextIntent.Speech2TextIntentCallback callbackFromS2T = new Speech2TextIntent.Speech2TextIntentCallback() {

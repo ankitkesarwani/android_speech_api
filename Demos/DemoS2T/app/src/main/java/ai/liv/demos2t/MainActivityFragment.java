@@ -57,6 +57,11 @@ public class MainActivityFragment extends Fragment {
 
         s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), new Speech2TextIntent.Speech2TextIntentCallback() {
             @Override
+            public void onTransactionEnd() {
+
+            }
+
+            @Override
             public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
                 if(!isDetached()) {
                     if (transcriptions.size() > 0) {
@@ -68,8 +73,14 @@ public class MainActivityFragment extends Fragment {
             }
 
             @Override
-            public void onRecordingCancelled() {
-
+            public void onPartialTranscriptionReceived(ArrayList<Transcription> transcriptions) {
+                if(!isDetached()) {
+                    if (transcriptions.size() > 0) {
+                        if(getView() != null) {
+                            contentView1.setText(transcriptions.get(0).getText());
+                        }
+                    }
+                }
             }
 
             @Override
