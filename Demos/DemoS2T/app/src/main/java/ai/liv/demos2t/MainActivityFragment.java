@@ -6,8 +6,6 @@
  *******************************************************/
 package ai.liv.demos2t;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,10 +17,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import ai.liv.s2tlibrary.Speech2TextIntent;
+import ai.liv.s2tlibrary.model.CanonicalData;
 import ai.liv.s2tlibrary.model.S2TError;
 import ai.liv.s2tlibrary.model.Transcription;
 
@@ -62,10 +62,11 @@ public class MainActivityFragment extends Fragment {
             }
 
             @Override
-            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
-                if(!isDetached()) {
+            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions, CanonicalData a) {
+                Log.d(TAG, "in onTranscriptionReceived:" + transcriptions.size());
+                if (!isDetached()) {
                     if (transcriptions.size() > 0) {
-                        if(getView() != null) {
+                        if (getView() != null) {
                             contentView1.setText(transcriptions.get(0).getText());
                         }
                     }
@@ -74,9 +75,9 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public void onPartialTranscriptionReceived(ArrayList<Transcription> transcriptions) {
-                if(!isDetached()) {
+                if (!isDetached()) {
                     if (transcriptions.size() > 0) {
-                        if(getView() != null) {
+                        if (getView() != null) {
                             contentView1.setText(transcriptions.get(0).getText());
                         }
                     }
@@ -85,10 +86,10 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public void onError(S2TError error) {
-                Log.d(TAG, "Error:"+error.message+error.errorCode);
+                Toast.makeText(getContext(), "Error:" + error.message + ", code:" + error.errorCode, Toast.LENGTH_LONG).show();
             }
 
-        }).setLanguage(lang).setQueryType(Speech2TextIntent.QUERY_PHONE).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
+        }).setLanguage(lang).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
 
 
         b1.setOnClickListener(new View.OnClickListener() {
