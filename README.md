@@ -3,6 +3,8 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 16, Android 4.1 (JELLY_BEAN) 
 
 ### Changelog
+- ##### 1.57 2018-05-05
+    - Querytype bug fix
 
 - ##### 1.56 2018-04-19
     - Bug fixes, improved streaming, query type integration
@@ -145,7 +147,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.56@aar') {
+    compile ('ai.liv:s2tlibrary:1.57@aar') {
         transitive = true
     }
 ```
