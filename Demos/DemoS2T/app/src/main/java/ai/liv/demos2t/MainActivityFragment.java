@@ -23,6 +23,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ai.liv.s2tlibrary.Speech2TextIntent;
+
 import ai.liv.s2tlibrary.model.S2TError;
 import ai.liv.s2tlibrary.model.Transcription;
 
@@ -88,7 +89,7 @@ public class MainActivityFragment extends Fragment {
                 Log.d(TAG, "Error:"+error.message+error.errorCode);
             }
 
-        }).setLanguage(lang).setQueryType(Speech2TextIntent.QUERY_PHONE).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
+        }).setLanguage(lang).setStreaming(false).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
 
 
         b1.setOnClickListener(new View.OnClickListener() {
