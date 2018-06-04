@@ -3,6 +3,10 @@
 Speech2Text library for Android can be integrated in Android applications. The library is supported from API Level: 16, Android 4.1 (JELLY_BEAN) 
 
 ### Changelog
+
+- ##### 1.59 2018-06-04
+    - Long pause, Short pause, streaming, Canonical Data addition
+
 - ##### 1.57 2018-05-05
     - Querytype bug fix
 
@@ -147,7 +151,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.57@aar') {
+    compile ('ai.liv:s2tlibrary:1.59@aar') {
         transitive = true
     }
 ```
@@ -169,8 +173,8 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
 ```java
       Speech2TextIntent.Speech2TextIntentCallback callbackFromS2T = new Speech2TextIntent.Speech2TextIntentCallback() {
             @Override
-            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions) {
-                //Write Code to handle the list of transcriptions received with their confidence scores
+            public void onTranscriptionReceived(ArrayList<Transcription> transcriptions, Canonical Data) {
+                //Write Code to handle the list of transcriptions in streaming mode, received with their confidence scores
                 if (transcriptions.size() > 0) {
                     for(Transcription transcription : transcriptions){
                       Log.d(TAG, "Transcription:"+transcription.getText()+", Confidence:"+transcription.getConfidence());
@@ -179,8 +183,13 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
             }
 	    
 	    @Override
-            public void onStreamingTranscriptionReceived(ArrayList<Transcription> transcriptions) {
-                //Experimental, leave this blank.
+            public void onPartialTranscriptionReceived(ArrayList<Transcription> transcriptions) {
+                //Write Code to handle the list of transcriptions in non streaming mode, received with their confidence scores
+                if (transcriptions.size() > 0) {
+                    for(Transcription transcription : transcriptions){
+                      Log.d(TAG, "Transcription:"+transcription.getText()+", Confidence:"+transcription.getConfidence());
+                    }
+                }
             }
 
             @Override
@@ -191,22 +200,33 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
               }
             }
 
+
             @Override
-            public void onRecordingCancelled() {
-                //Called when the user explicitly presses the close button
+            public void onRecordingEnd() {
+                //Called when recording is stopped and SDK is awaiting a result
+                Log.d(TAG,"onRecordingEnd");
+            }
+
+            @Override
+            public void onTransactionEnd() {
+                //Called when service is stopped
+                ripple.setVisibility(View.GONE);
+                isRecording = false;
             }
       };
 ```
 
 3. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
 
-NOTE: setStreaming(True/False) is an exposed experimental api which is not recommended to be used as it's still in beta.
+NOTE: setStreaming(True/False) switches on the SDK in streaming mode, 
+-  When streaming is true, you will get intermediate callbacks on whenever silence of 1.5 second(short silence) is detected with the partial transcription, and another 3.5 seconds of silence(long silence) triggers completion of transaction. The new intermediate callback onPartialTranscriptionReceived() gives intermediate results you can concatenate.
+-  When streaming is set to false, the audio is of 15 second transcription transactions and final one onTranscriptionReceived() callback.
 
 ```java
       Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
                                 .setLanguage(Speech2TextIntent.LANGUAGE_HINDI)
                                 .setView(Speech2TextIntent.VIEW_KEYBOARD)
-                                .setHeightInPixels(540) //Height in Pixels for the view wanted, default height is 260dp
+                                .setStreaming(true)
                                 .build();
 ```
 
@@ -249,8 +269,9 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
     setView() supported parameters:
     ```java
         Speech2TextIntent.ACTIVITY_POPUP
-	      Speech2TextIntent.VIEW_KEYBOARD
+	    Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
+        Speech2TextIntent.NO_VIEW
     ```
 
 -   setHeightInPixels() can be optionally used to set height of the recording view. The default value is 260dp(in pixels)
