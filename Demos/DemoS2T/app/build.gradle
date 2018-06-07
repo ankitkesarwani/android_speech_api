@@ -31,7 +31,7 @@ repositories {
 }
 
 dependencies {
-    compile ('ai.liv:s2tlibrary:1.59@aar') {
+    compile ('ai.liv:s2tlibrary:1.60@aar') {
         transitive = true
     }
 

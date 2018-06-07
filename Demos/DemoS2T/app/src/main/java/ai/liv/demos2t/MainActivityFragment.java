@@ -72,6 +72,7 @@ public class MainActivityFragment extends Fragment {
                 }
             }
 
+
             @Override
             public void onPartialTranscriptionReceived(ArrayList<Transcription> transcriptions) {
                 if (!isDetached()) {
@@ -91,6 +92,11 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onRecordingEnd() {
                 Log.d(TAG,"Recording has ended, fetching transcription");
+            }
+
+            @Override
+            public void onAmplitudeChanged(double v) {
+
             }
 
         }).setLanguage(lang).setStreaming(true).setView(Speech2TextIntent.VIEW_KEYBOARD).build();
