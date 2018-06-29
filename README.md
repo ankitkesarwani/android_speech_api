@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.60 2018-06-07
+    - set autostop duration, amplitude callback added for animation drawing
+
 - ##### 1.59 2018-06-04
     - Long pause, Short pause, streaming, Canonical Data addition
 
@@ -151,7 +154,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.59@aar') {
+    compile ('ai.liv:s2tlibrary:1.60@aar') {
         transitive = true
     }
 ```
@@ -205,6 +208,12 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
             public void onRecordingEnd() {
                 //Called when recording is stopped and SDK is awaiting a result
                 Log.d(TAG,"onRecordingEnd");
+            }
+
+            @Override
+            public void onAmplitudeChanged(double amplitude) {
+                //Callback Every 60ms with average amplitude for the duration, for animation drawing.
+                Log.d(TAG,"onAmplitudeChanged"+amplitude);
             }
 
             @Override
