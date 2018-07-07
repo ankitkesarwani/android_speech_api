@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.61 2018-07-07
+    - English transliterated text
+
 - ##### 1.60 2018-06-07
     - set autostop duration, amplitude callback added for animation drawing
 
@@ -154,7 +157,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.60@aar') {
+    compile ('ai.liv:s2tlibrary:1.61@aar') {
         transitive = true
     }
 ```
@@ -180,7 +183,7 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
                 //Write Code to handle the list of transcriptions in streaming mode, received with their confidence scores
                 if (transcriptions.size() > 0) {
                     for(Transcription transcription : transcriptions){
-                      Log.d(TAG, "Transcription:"+transcription.getText()+", Confidence:"+transcription.getConfidence());
+                      Log.d(TAG, "Transcription:"+transcription.getText()+", English Transcription:"+transcription.getEnglishText()", Confidence:"+transcription.getConfidence());
                     }
                 }
             }
@@ -190,7 +193,7 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
                 //Write Code to handle the list of transcriptions in non streaming mode, received with their confidence scores
                 if (transcriptions.size() > 0) {
                     for(Transcription transcription : transcriptions){
-                      Log.d(TAG, "Transcription:"+transcription.getText()+", Confidence:"+transcription.getConfidence());
+                      Log.d(TAG, "Transcription:"+transcription.getText()+", English Transcription:"+transcription.getEnglishText()+", Confidence:"+transcription.getConfidence());
                     }
                 }
             }
