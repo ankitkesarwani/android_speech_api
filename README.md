@@ -231,8 +231,10 @@ NOTE: onStreamingTranscriptionReceived() has been added in v1.56 which is still 
 3. Initialize the Speech2TextIntent object by using the Speech2TextIntent.Speech2TextIntentBuilder methods.
 
 NOTE: setStreaming(True/False) switches on the SDK in streaming mode, 
--  When streaming is true, you will get intermediate callbacks on whenever silence of 1.5 second(short silence) is detected with the partial transcription, and another 3.5 seconds of silence(long silence) triggers completion of transaction. The new intermediate callback onPartialTranscriptionReceived() gives intermediate results you can concatenate.
--  When streaming is set to false, the audio is of 15 second transcription transactions and final one onTranscriptionReceived() callback.
+
+3.1  When streaming is true, you will get intermediate callbacks on whenever silence of 1.5 second(short silence) is detected with the partial transcription, and another 3.5 seconds of silence(long silence) triggers completion of transaction. The new intermediate callback onPartialTranscriptionReceived() gives intermediate results you can concatenate.
+
+3.2  When streaming is set to false, the audio is of 15 second transcription transactions and final one onTranscriptionReceived() callback.
 
 ```java
       Speech2TextIntent s2TIntent = new Speech2TextIntent.Speech2TextIntentBuilder(getActivity(), callbackFromS2T)
@@ -249,7 +251,7 @@ NOTE: setStreaming(True/False) switches on the SDK in streaming mode,
     s2TIntent.startService();
 ```
 
-4. There is also a provision to stop the Speech2TextIntent service with
+5. There is also a provision to stop the Speech2TextIntent service with
 
 ```java
     s2TIntent.stopService();
