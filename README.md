@@ -4,6 +4,9 @@ Speech2Text library for Android can be integrated in Android applications. The l
 
 ### Changelog
 
+- ##### 1.64 2018-09-10
+    - Bug fixes on streaming side
+
 - ##### 1.61 2018-07-07
     - English transliterated text
 
@@ -157,7 +160,7 @@ repositories {
 
 3. In the app build.gradle, add following snippet inside dependencies
 ```sh
-    compile ('ai.liv:s2tlibrary:1.61@aar') {
+    compile ('ai.liv:s2tlibrary:1.64@aar') {
         transitive = true
     }
 ```
@@ -283,7 +286,7 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
     setView() supported parameters:
     ```java
         Speech2TextIntent.ACTIVITY_POPUP
-	    Speech2TextIntent.VIEW_KEYBOARD
+	Speech2TextIntent.VIEW_KEYBOARD
         Speech2TextIntent.VIEW_POPUP
         Speech2TextIntent.NO_VIEW
     ```
@@ -292,19 +295,65 @@ The mechanism attaches itself to the Activity Lifecycle, so there is no specific
 
 -   onError() parameter error code values can be checked comparing to the constants below:
     ```java
-            S2TError.ERROR_NO_INTERNET
-            S2TError.ERROR_NO_USER_ID
-            S2TError.ERROR_RECORDING_PERMISSION_NOT_AVAILABLE
-            S2TError.ERROR_READ_EXTERNAL_STORAGE_NOT_AVAILABLE
-            S2TError.ERROR_WRITE_EXTERNAL_STORAGE_NOT_AVAILABLE
-            S2TError.ERROR_WINDOW_OVERLAY_PERMISSION_RESTART_REQUIRED
-            S2TError.ERROR_IN_AUDIO
-            S2TError.ERROR_NO_AUDIO_FILE_SENT
-            S2TError.ERROR_UNAUTHORIZED_REQUEST
-            S2TError.ERROR_SERVER_ERROR
-
+    
+    public static int ERROR_NO_INTERNET = 1;
+    No active Internet connection can be found to reach our backend, either on wifi or data.
+    
+    public static int ERROR_NO_USER_ID = 2;
+    Initialisation of this user has not completed for our backend, we cannot transcribe till proper user id is alloted. Generally reinitiated in the next SDK launch.
+    
+    public static int ERROR_RECORDING_PERMISSION_NOT_AVAILABLE = 3;
+    Above permission not available
+    
+    public static int ERROR_READ_EXTERNAL_STORAGE_NOT_AVAILABLE = 4;
+    Above permission not available
+    
+    public static int ERROR_WRITE_EXTERNAL_STORAGE_NOT_AVAILABLE = 5;
+    Above permission not available
+    
+    public static int ERROR_WINDOW_OVERLAY_PERMISSION_RESTART_REQUIRED = 6;
+    Need draw overlay permission from settings to run KEYBOARD_VIEW mode
+    
+    public static int ERROR_IN_AUDIO = 7;
+    File was not uploaded eventhough the request was sent
+    
+    public static int ERROR_NO_AUDIO_FILE_SENT = 8;
+    The encoding of the file is not correct or a corrupt file
+    
+    public static int ERROR_UNAUTHORIZED_REQUEST = 9;
+    Error indicating that there was an authentication failure when performing a Request.
+    
+    public static int ERROR_SERVER_ERROR = 10;
+    Indicates that the server responded with an error response.
+    
+    public static int ERROR_NO_INTERNET_TIMEOUT = 11;
+    Fired when our 15 second timeout for a specific transaction is hit.
+    
+    public static int ERROR_AUDIO_BUFFER = 12;
+    Indicates a buffer overflow which is an internal issue
+    
+    public static int ERROR_IN_LANGUAGE = 13;
+    Indicates the language selected while initialisation is wrong
+    
+    public static int ERROR_UNKNOWN = 14;
+    Not belonging to any of the codes
+   
+    public static int ERROR_NO_INTERNET_DUE_TO_NO_CONNECTION = 15;
+    Error indicating that no connection could be established when performing a network request.
+    
+    public static int ERROR_NO_INTERNET_DUE_TO_NETWORK = 16;
+    Indicates that there was a network error when performing a network request, eg: connected by wifi but unable to transfer data due to firewall, DNS issue etc.
+    
+    public static int ERROR_NO_INTERNET_DUE_TO_TIMEOUT = 17;
+    Indicates that the connection or the socket timed out.
+    
+    public static int ERROR_RESPONSE = 19;
+    Error response from our backend.
+    
+    public static int ERROR_LIB_UNSUPPORTED = 20;
+    The CPU of the phone in use doesn't support our bundled encoding library which is a native one.
+    
     ```
-
 
 -   Xiaomi MIUI OS by default doesn't give permission to draw overlay above apps and also doesn't allow you to get it on runtime like other OSes. So eventhough the recording is started UI wouldn't be drawn unless the permission is provided. 
 
