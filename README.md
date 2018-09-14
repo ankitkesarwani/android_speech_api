@@ -254,7 +254,12 @@ NOTE: setStreaming(True/False) switches on the SDK in streaming mode,
     s2TIntent.startService();
 ```
 
-5. There is also a provision to stop the Speech2TextIntent service with
+5. Under the streaming mode, the SDK autostops on silence detection. You can set the silence duration by using the method,
+```java
+    setAutoStopDuration(durationInMillis);
+```
+
+6. There is also a provision to stop the Speech2TextIntent service with
 
 ```java
     s2TIntent.stopService();
